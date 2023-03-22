@@ -5,15 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "User")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     @Column(name = "first_name")
     String firstName;
 
@@ -25,18 +30,19 @@ public class User {
 
     @Column(name = "password")
     String password;
+
     @Column(name = "date")
-    Integer date;
+    Long date;
+    @OneToOne
+    @Column(name = "role_id")
+    private Role role;
 
-
-    public User(String firstName, String lastName, String email, String password, Integer date) {
+    public User(String firstName, String lastName, String email, String password, Long date) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.date = date;
-
     }
-
 
 }

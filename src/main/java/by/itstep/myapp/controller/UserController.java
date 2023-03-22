@@ -18,7 +18,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String showAllUsers(Model model) {
-        return pagination(1, "firstName", "ASC", model);
+        return pagination(1, "userName", "ASC", model);
     }
 
     @GetMapping("/users/page/{pageNo}")
